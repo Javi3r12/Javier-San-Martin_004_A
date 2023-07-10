@@ -6,6 +6,8 @@ warnings.filterwarnings("ignore", category=np.VisibleDeprecationWarning)
 o=0
 i=0
 opt=0
+tipo=0
+costo=0
 asientos=np.arange(0,101)
 lugares=np.array([])
 personas=np.array([])
@@ -108,9 +110,17 @@ def tres():
   print(f"{personas}")
 
 def cuatro():
+  costo=0
   print("")
-
-
+  if tipo==1:
+    costo=costo+120000
+  elif tipo==2:
+    costo=costo+80000
+  elif tipo==3:
+    costo=costo+50000
+  
+  total=costo
+  print(f"En total de ingresos hay {total}")
 
 while True:
   menu()
