@@ -1,0 +1,130 @@
+from numpy.core.multiarray import arange
+import numpy as np
+import math
+import warnings
+warnings.filterwarnings("ignore", category=np.VisibleDeprecationWarning) 
+o=0
+i=0
+opt=0
+asientos=np.arange(0,101)
+lugares=np.array([])
+personas=np.array([])
+asientos[14:17]='0'
+asientos[33] = "0"
+asientos[45] = "0"
+
+
+
+def menu():
+  print("1. Comprar entradas\n2. Mostrar ubicaciones disponibles\n3. Ver listado de asistentes\n4. Mostrar ganancias totales\n5. Salir")
+
+
+def options():
+    while True:
+        try:
+            opt = int(input(""))
+            if opt == 1:
+                return opt
+            elif opt == 2:
+                return opt
+            elif opt == 3:
+                return opt
+            elif opt == 4:
+                return opt
+            elif opt == 5:
+                return opt
+            else:
+                print("Ingrese uno de los números mostrados.")
+        except:
+            raise TypeError("Debe de ingresar una de las opciones mostradas.")
+
+
+def mostrar():
+  print(asientos[0:11])
+  print(asientos[11:21])
+  print(asientos[21:31])
+  print(asientos[31:41])
+  print(asientos[41:51])
+  print(asientos[51:61])
+  print(asientos[61:71])
+  print(asientos[71:81])
+  print(asientos[81:91])
+  print(asientos[91:101])
+
+def uno():
+  o=0
+  i=0
+  while o==0:
+    print("1) Platinum, $120.000. (Asientos del 1 al 20).\n2) Gold, $80.000. (Asientos del 21 al 50). \n3) Silver, $50.000. (Asientos del 51 al 100.).")
+    tipo=int(input("Ingrese el tipo de entradas que desea  "))
+    try:
+      cant=int(input("Cuantas entradas desea, Ingrese "))
+      if cant>=1 and cant<=3:
+        print("")
+      else:("Debe ingresar un valor entre 1 y 3")
+    except:
+      print("Debe ingresar una opcion valida")
+
+    while i>=0 and i<2:
+      run=int(input("Ingrese su run sin puntos ni digito verificador  "))
+      if len(str(run))==7 or len(str(run))==8:
+        print("")
+        i=i+1
+      else:
+        print("Run ingresado erroneamente")
+      if str(run).count(" ")==0:
+        print("")
+        i=i+1
+      else:
+        print("Run ingresado erroneamente")
+
+    for i in range(cant):
+      while True:
+        try:
+          lugar=int(input("Ingrese el numero del lugar que desea  "))
+          break
+        except:
+          print("Valor ingresado incorrecto")
+      np.append(lugares, [lugar])
+      np.append(personas, [run,lugares]) 
+      return lugares
+      return personas
+      return tipo
+      print(asientos[lugar:lugar+1])
+      if asientos[lugar:lugar+1]==0:
+        print("No esta disponible")
+      else:
+        o=1
+
+
+  
+def dos():
+  mostrar()
+ 
+  x = np.where(asientos == 0)
+  print(f"Asientos ocupados {x}")
+
+def tres():
+  print(f"{personas}")
+
+def cuatro():
+  print("")
+
+
+
+while True:
+  menu()
+  opt = options()
+  
+  if opt==1:
+    uno()
+  elif opt==2:
+    dos()
+  elif opt==3:
+    tres()
+  elif opt==4:
+    cuatro()
+  else:
+    print("Gracias por usar nuestro sistema")
+    break
+
